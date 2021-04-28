@@ -9,8 +9,6 @@
     <link rel="pingback" href="https://www.leapcloud.cn/news/xmlrpc.php">
     <script src="/news/bower_components/jquery/dist/jquery.min.js"></script>
     <title>电镀之家下载</title>
-</head>
-<body>
     <style>
 
         .case-download-bg{
@@ -19,38 +17,7 @@
         .icon{
             background-image:url(ico.jpg);
         }
-		div#maxleap_mask {
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        background-color: rgba(0,0,0,0.7);
-                        background-image: url();
-                        background-repeat: no-repeat;
-                        background-position: 90% 0%;
-                    }
-                    div#maxleap_mask > div.tips {
-                        position: absolute;
-                        font-size: 30px;
-                        color: #ffffff;
-                        left: 50%;
-                        top: 40%;
-                        transform: translate(-50%,-50%);
-                        -webkit-transform: translate(-50%,-50%);
-                        -moz-transform: translate(-50%,-50%);
-                        -o-transform: translate(-50%,-50%);
-                    }
-                    div.maxleap_top_tips, div.maxleap_center_tips, div.maxleap_bottom_tips {
-                        margin-bottom: 15px;
-                        white-space: nowrap;
-                    }
     </style>
-<div id="maxleap_mask" style="display:none">
-            <div class="tips">
-                <div class="maxleap_top_tips">点击右上角菜单</div>
-                <div class="maxleap_center_tips"><span id="openWay"></span></div>
-                <div class="maxleap_bottom_tips">打开并安装应用</div>
-            </div>
-        </div>
                 <!--SDK-->
         <script type="text/javascript" src="//webcdn.leapcloud.cn/javascript/lib/leapcloud-jssdk.js/dist/MLTimeline.min.js?bust=4.9"></script>
         <!--SDK USE HELPER-->
@@ -121,6 +88,9 @@
 
             })(window);
         </script>
+</head>
+<body>
+    
     <div class="case-download-page">
         <div class="case-download-bg">
             <div class="case-download-blank" style="border-left: 768px solid transparent; border-right: 768px solid transparent; border-bottom: 57.76px solid rgb(255, 255, 255);"></div>
