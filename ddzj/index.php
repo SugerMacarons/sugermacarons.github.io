@@ -3,11 +3,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta content="index,follow" name="Baiduspider">
     <meta content="index,follow" name="robots">
-    <link rel="shortcut icon" href="/news/wp-content/uploads/2016/09/favicon.png">
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link href="showCase.css" rel="stylesheet" type="text/css">
     <link rel="pingback" href="xmlrpc.php">
-    <script src="/news/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="jquery.min.js"></script>
 
     <!--[if lt IE 9]>
     <script src="https://www.leapcloud.cn/news/wp-content/themes/miwan/js/html5.js"></script>
