@@ -8,10 +8,7 @@
     <link href="showCase.css" rel="stylesheet" type="text/css">
     <link rel="pingback" href="https://www.leapcloud.cn/news/xmlrpc.php">
     <script src="/news/bower_components/jquery/dist/jquery.min.js"></script>
-
-    <!--[if lt IE 9]>
-    <script src="https://www.leapcloud.cn/news/wp-content/themes/miwan/js/html5.js"></script>
-    <![endif]-->
+    <title>电镀之家下载</title>
 </head>
 <body>
     <style>
@@ -22,14 +19,108 @@
         .icon{
             background-image:url(ico.jpg);
         }
+		div#maxleap_mask {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0,0,0,0.7);
+                        background-image: url();
+                        background-repeat: no-repeat;
+                        background-position: 90% 0%;
+                    }
+                    div#maxleap_mask > div.tips {
+                        position: absolute;
+                        font-size: 30px;
+                        color: #ffffff;
+                        left: 50%;
+                        top: 40%;
+                        transform: translate(-50%,-50%);
+                        -webkit-transform: translate(-50%,-50%);
+                        -moz-transform: translate(-50%,-50%);
+                        -o-transform: translate(-50%,-50%);
+                    }
+                    div.maxleap_top_tips, div.maxleap_center_tips, div.maxleap_bottom_tips {
+                        margin-bottom: 15px;
+                        white-space: nowrap;
+                    }
     </style>
-    <div id="maxleap_mask" style="display: none">
-        <div class="tips">
-            <div class="maxleap_top_tips">点击右上角菜单</div>
-            <div class="maxleap_center_tips"><span id="openWay"></span></div>
-            <div class="maxleap_bottom_tips">打开并安装应用</div>
+<div id="maxleap_mask" style="display:none">
+            <div class="tips">
+                <div class="maxleap_top_tips">点击右上角菜单</div>
+                <div class="maxleap_center_tips"><span id="openWay"></span></div>
+                <div class="maxleap_bottom_tips">打开并安装应用</div>
+            </div>
         </div>
-    </div>
+                <!--SDK-->
+        <script type="text/javascript" src="//webcdn.leapcloud.cn/javascript/lib/leapcloud-jssdk.js/dist/MLTimeline.min.js?bust=4.9"></script>
+        <!--SDK USE HELPER-->
+        <script type="text/javascript" src="//webcdn.leapcloud.cn/javascript/modules/common/DataCollection/index.min.js?bust=4.9"></script>
+        <script type="text/javascript">
+            ;(function(global){
+                var appId,platform;
+                setAppIdAndPlatFrom();
+                DataCollection.initialize({
+                    gaSwitch:false,
+                    utmSwitch:true
+                });
+                //MakeAppVisitDownloadLink == viewpage
+                setTimeout(function(){
+                    DataCollection.monitor("ViewPage",{
+                        path:location.href
+                    });
+                    DataCollection.monitor("MakeAppVisitDownloadLink",{
+                        path:location.href,
+                        visitAppId:appId,
+                        visitPlatform:platform
+                    },'scan');
+                },0);
+                window.onload = function(){
+                    var ua = window.navigator.userAgent.toLowerCase();
+                
+                    function isWeixin() {
+                        if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    };
+                    
+                    if(isWeixin()){
+                        if(ua.indexOf('android') != -1){
+                            document.getElementById('openWay').innerHTML = '在 "默认浏览器" 中';
+                        }
+                        if(ua.indexOf('iphone') != -1){
+                            document.getElementById('openWay').innerHTML = '在 "Safari" 中';
+                        }
+                        document.getElementById('maxleap_mask').style.display = 'block';
+                    }
+                    var downloadLink = document.getElementsByTagName("a")[0];
+
+                    downloadLink.addEventListener("click",function(e){
+                        DataCollection.monitor("MakeAppDownloadApp",{
+                            downloadAppId:appId,
+                            downloadPlatform:platform,
+                            downloadUrl:e.currentTarget.getAttribute('href')
+                        });
+                    });
+                }
+
+                function setAppIdAndPlatFrom(){
+                    var pathname = global.location.pathname;
+                    var result = pathname.split('/');
+
+                    if(result){
+                        platform = result[1];
+                        appId = result[2];
+                        DataCollection.saveAppInfo({
+                            maxwon_appId:appId,
+                            platform:platform
+                        });
+                    }
+                }
+
+            })(window);
+        </script>
     <div class="case-download-page">
         <div class="case-download-bg">
             <div class="case-download-blank" style="border-left: 768px solid transparent; border-right: 768px solid transparent; border-bottom: 57.76px solid rgb(255, 255, 255);"></div>
